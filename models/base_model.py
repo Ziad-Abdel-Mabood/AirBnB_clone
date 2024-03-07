@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ the base class; defines all common attr/methods for other classes """
 import datetime
+from models import storage
 import uuid
 
 
@@ -33,6 +34,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = self.created_at
+            storage.new(self.to_dict())
 
     def __str__(self):
         """ string representation of the object """
@@ -42,6 +44,7 @@ class BaseModel:
         """ updates the public instance attribute
             updated_at with the current datetime """
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values
