@@ -8,12 +8,23 @@ class FileStorage:
         file and deserializes JSON file to instances
 
         Attributes:
-            __file_path:     path to the file to write data on
-            __objects:      dict of objects to serialize
+            __file_path:        path to the file to write data on
+            __objects:          dict of objects to serialize
+        Methods:
+            all(self):          returns contents of the __objects dictionary.
+            new(self, obj):     adds objects to __objects dict with
+                                '<class name>.id' as their key.
+            save(self):         writes __objects dictionary into a json file.
+            reload(self):       reads the json file and writes its data into
+                                the __objects dictionary.
     """
     
     __file_path = 'file.json'
     __objects = {}
+
+    @property
+    def objects(self):
+        return self.__objects
 
     def all(self):
         """ retuns the dict __objects """
@@ -25,15 +36,13 @@ class FileStorage:
 
     def save(self):
         """  serializes __objects to the JSON file (path: __file_path) """
-        f = open(self.__file_path, 'w')
-        json.dump(self.__objects, f)
-        f.close()
+        with open(self.__file_path, 'w') as f:
+            json.dump(self.__objects, f)
 
     def reload(self):
         """ deserializes the JSON file to __objects """
         try:
-            f = open(self.__file_path, 'r')
-            self.__objects = json.load(f)
-            f.close()
+            with open(self.__file_path, 'r') as f:
+                self.__objects = json.load(f)
         except:
             return

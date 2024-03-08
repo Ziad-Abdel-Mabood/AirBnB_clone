@@ -2,6 +2,7 @@
 """ test unit for base_model.py """
 from models.base_model import BaseModel
 import unittest
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -20,6 +21,8 @@ class TestBaseModel(unittest.TestCase):
         with self.subTest('Exists & correct type'):
             self.assertTrue(isinstance(self.my_model, BaseModel))
             self.assertTrue(isinstance(self.my_model.id, str))
+            self.assertTrue(isinstance(self.my_model.created_at, datetime.datetime))
+            self.assertTrue(isinstance(self.my_model.updated_at, datetime.datetime))
 
         with self.subTest('Can add attributes'):
             self.assertTrue(isinstance(self.my_model.name, str))
@@ -41,6 +44,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue('updated_at' in self.my_model_dict)
         self.assertTrue('name' in self.my_model_dict)
         self.assertTrue('my_number' in self.my_model_dict)
+        self.assertTrue(isinstance(self.my_model_dict['created_at'],
+                                   str))
+        self.assertTrue(isinstance(self.my_model_dict['updated_at'],
+                                   str))
 
 
 class TestKWargs(unittest.TestCase):
@@ -61,12 +68,15 @@ class TestKWargs(unittest.TestCase):
         with self.subTest(' my_new_model exists '):
             self.assertTrue(isinstance(self.my_new_model, BaseModel))
             self.assertTrue(isinstance(self.my_new_model.id, str))
+            self.assertTrue(isinstance(self.my_new_model.created_at, datetime.datetime))
+            self.assertTrue(isinstance(self.my_new_model.updated_at, datetime.datetime))
+
         with self.subTest(' my_new_model and my_model have equal attributes '):
             for k, k2 in zip(self.my_model.__dict__,
                              self.my_new_model.__dict__):
                 self.assertEqual(self.my_model.__dict__[k],
                                  self.my_new_model.__dict__[k2])
-        with self.subTest(' making sure the two objects are the same '):
+        with self.subTest(' making sure the two objects are the not same '):
             self.assertFalse(self.my_model is self.my_new_model)
 
 
