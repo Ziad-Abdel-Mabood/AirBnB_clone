@@ -17,25 +17,31 @@ class TestFileStorage(unittest.TestCase):
                     'id': '999-999-999',
                     'name': 'Walter White'}
         self.storage_test = FileStorage()
-        self.storage_test.__file_path = 'test_file.json'
+        self.storage_test.testfilepath = 'test_file.json'
+        self.storage_test.testobjects = {}
+
+    def tearDown(self):
+        """ returning to original storage file path """
+        self.storage_test.testfilepath = 'file.json'
 
     def test_basic(self):
         """ testing basic functionality of FileStorage class """
-        with self.subTest('testing initialization of FileStorage object'):
+        with self.subTest('[1] testing initialization of FileStorage object'):
             self.assertTrue(isinstance(self.storage_test, FileStorage))
-            self.assertTrue(isinstance(self.storage_test.__file_path,
+            self.assertTrue(isinstance(self.storage_test.testfilepath,
                                        str))
-            self.assertTrue(isinstance(self.storage_test.objects, dict))
-            self.assertTrue(self.storage_test.objects == {})
+            self.assertTrue(isinstance(self.storage_test.testobjects, dict))
+            self.assertTrue(self.storage_test.testobjects == {})
 
-        with self.subTest('testing FileStorage class methods'):
+        with self.subTest('[2] testing FileStorage class methods'):
             dict_key = f"{self.obj['__class__']}.{self.obj['id']}"
             self.storage_test.new(self.obj)
             self.assertEqual(self.obj,
-                             self.storage_test.objects[dict_key])
+                             self.storage_test.testobjects[dict_key])
 
-        with self.subTest('testing save() and reload()'):
+        with self.subTest('[3] testing save() and reload()'):
             self.storage_test.save()
+            self.storage_test.testobjects = {}
             self.storage_test.reload()
             self.assertEqual(self.obj,
-                             self.storage_test.objects[dict_key])
+                             self.storage_test.testobjects[dict_key])

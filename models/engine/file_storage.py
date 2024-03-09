@@ -23,8 +23,24 @@ class FileStorage:
     __objects = {}
 
     @property
-    def objects(self):
+    def testobjects(self):
+        """ property getter for testing purposes """
         return self.__objects
+    
+    @property
+    def testfilepath(self):
+        """property setter for testing purposes """
+        return self.__file_path
+    
+    @testobjects.setter
+    def testobjects(self, objects_dict):
+        """ property getter for testing purposes """
+        self.__objects = objects_dict
+
+    @testfilepath.setter
+    def testfilepath(self, path):
+        """property setter for testing purposes """
+        self.__file_path = path
 
     def all(self):
         """ retuns the dict __objects """
