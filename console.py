@@ -3,8 +3,9 @@
 import cmd
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
-    """ """
+    """ Command interpreter class """
 
     prompt = '(hbnb) '
 
@@ -23,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id.
-        
+
         Usage:
             create BaseModel
         """

@@ -21,8 +21,10 @@ class TestBaseModel(unittest.TestCase):
         with self.subTest('Exists & correct type'):
             self.assertTrue(isinstance(self.my_model, BaseModel))
             self.assertTrue(isinstance(self.my_model.id, str))
-            self.assertTrue(isinstance(self.my_model.created_at, datetime.datetime))
-            self.assertTrue(isinstance(self.my_model.updated_at, datetime.datetime))
+            self.assertTrue(isinstance(self.my_model.created_at,
+                                       datetime.datetime))
+            self.assertTrue(isinstance(self.my_model.updated_at,
+                                       datetime.datetime))
 
         with self.subTest('Can add attributes'):
             self.assertTrue(isinstance(self.my_model.name, str))
@@ -68,8 +70,10 @@ class TestKWargs(unittest.TestCase):
         with self.subTest(' my_new_model exists '):
             self.assertTrue(isinstance(self.my_new_model, BaseModel))
             self.assertTrue(isinstance(self.my_new_model.id, str))
-            self.assertTrue(isinstance(self.my_new_model.created_at, datetime.datetime))
-            self.assertTrue(isinstance(self.my_new_model.updated_at, datetime.datetime))
+            self.assertTrue(isinstance(self.my_new_model.created_at,
+                                       datetime.datetime))
+            self.assertTrue(isinstance(self.my_new_model.updated_at,
+                                       datetime.datetime))
 
         with self.subTest(' my_new_model and my_model have equal attributes '):
             for k, k2 in zip(self.my_model.__dict__,

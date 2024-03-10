@@ -18,20 +18,20 @@ class FileStorage:
             reload(self):       reads the json file and writes its data into
                                 the __objects dictionary.
     """
-    
+
     __file_path = 'file.json'
     __objects = {}
-
+    '''
     @property
     def testobjects(self):
         """ property getter for testing purposes """
         return self.__objects
-    
+
     @property
     def testfilepath(self):
         """property setter for testing purposes """
         return self.__file_path
-    
+
     @testobjects.setter
     def testobjects(self, objects_dict):
         """ property getter for testing purposes """
@@ -41,6 +41,7 @@ class FileStorage:
     def testfilepath(self, path):
         """property setter for testing purposes """
         self.__file_path = path
+    '''
 
     def all(self):
         """ retuns the dict __objects """
@@ -60,5 +61,5 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 self.__objects = json.load(f)
-        except:
+        except NameError:
             return
