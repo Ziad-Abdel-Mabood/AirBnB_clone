@@ -21,8 +21,7 @@ class FileStorage:
 
     __file_path = 'file.json'
     __objects = {}
-    '''
-    @property
+
     def testobjects(self):
         """ property getter for testing purposes """
         return self.__objects
@@ -41,7 +40,7 @@ class FileStorage:
     def testfilepath(self, path):
         """property setter for testing purposes """
         self.__file_path = path
-    '''
+
 
     def all(self):
         """ retuns the dict __objects """
