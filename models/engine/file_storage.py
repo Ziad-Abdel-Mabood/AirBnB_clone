@@ -22,6 +22,7 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    @property
     def testobjects(self):
         """ property getter for testing purposes """
         return self.__objects
