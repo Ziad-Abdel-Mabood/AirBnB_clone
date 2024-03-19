@@ -1,0 +1,11 @@
+--2024-03-19 04:47:40--  https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.132.240, 54.231.230.240, 54.231.229.80, ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.132.240|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 9876 (9.6K) [image/png]
+Saving to: ‘logo.png’
+
+     0K .........                                             100% 4.79M=0.002s
+
+2024-03-19 04:47:40 (4.79 MB/s) - ‘logo.png’ saved [9876/9876]
+
