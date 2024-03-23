@@ -1,0 +1,28 @@
+/* places section */
+section.places {
+    position: relative;
+    text-align: center;
+}
+
+.places h1 {
+    position: static;
+    font-size: 30px;
+    text-align: left;
+}
+
+.places article {
+    display: inline-block;
+    position: relative;
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+
+.places article h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
